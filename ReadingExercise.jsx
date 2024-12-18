@@ -5,17 +5,17 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [username, setUsername] = useState("");
 
-  const someFunc = () => {
+  const toggleLight = () => { // used to be called someFunc
     setIsLightOn(!isLightOn);
   };
 
-  const someOtherFunc = () => {
+  const plusOneToCounter = () => { // used to be called someOtherFunc
     setCounter(counter + 1);
   };
 
-  const blaFunction = (event) => {
+  const handleInput = (event) => { // used to be called blaFunction
     setUsername(event.target.value);
-  };
+  };  
 
   return (
     <div style={{ padding: "20px" }}>
@@ -24,13 +24,13 @@ function App() {
       <div>
         <h2>Light Switch</h2>
         <p>The light is currently: {isLightOn ? "ON" : "OFF"}</p>
-        <button onClick={someFunc}>Turn {isLightOn ? "OFF" : "ON"}</button>
+        <button onClick={toggleLight}>Turn {isLightOn ? "OFF" : "ON"}</button>
       </div>
 
       <div>
         <h2>Counter</h2>
         <p>Count: {counter}</p>
-        <button onClick={someOtherFunc}>Increment Counter</button>
+        <button onClick={plusOneToCounter}>Increment Counter</button>
         <button onClick={() => setCounter(0)}>Reset Counter</button>
       </div>
 
@@ -41,12 +41,12 @@ function App() {
           type="text"
           placeholder="Enter username"
           value={username}
-          onChange={blaFunction}
+          onChange={handleInput}
         />
       </div>
 
       <div>
-        <button onClick={() => setCounter(0)}>Reset Light</button>
+        <button onClick={() => setIsLightOn(false)}>Reset Light</button>
       </div>
     </div>
   );
